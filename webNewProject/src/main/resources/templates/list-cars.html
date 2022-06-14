@@ -1,0 +1,50 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>List Cars</title>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>List Cars</h3>
+
+    <hr/>
+    <a th:href="@{/addCarForm}" class="btn btn-primary">Add Car</a>
+    <br/><br/>
+    <table class="table table-bordered table-striped" style="width: 700px">
+
+        <thead>
+        <tr>
+            <th>Mark</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car: ${cars}">
+            <td th:text="${car.mark}" />
+            <td th:text="${car.model}" />
+            <td th:text="${car.color}" />
+            <td>
+                <a th:href="@{/showUpdateForm(carId=${car.id})}" class="btn btn-info">Update</a>
+
+                <a th:href="@{/deleteCar(carId=${car.id})}" class="btn btn-danger ml-2">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+</body>
+
+</html>
